@@ -1,18 +1,31 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
+import { Auth } from './service/auth.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AcessoComponent } from './acesso/acesso.component';
+import { BannerComponent } from './acesso/banner/banner.component';
+import { LoginComponent } from './acesso/login/login.component';
+import { CadastroComponent } from './acesso/cadastro/cadastro.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AcessoComponent,
+    BannerComponent,
+    LoginComponent,
+    CadastroComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ Auth ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
