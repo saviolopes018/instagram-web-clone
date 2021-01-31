@@ -1,5 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { state, style, transition, trigger, animate } from '@angular/animations';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Auth } from '../../service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -21,14 +23,24 @@ export class LoginComponent implements OnInit {
 
   public estadoLogin: string = 'criado';
   @Output() public exibirPainel: EventEmitter<boolean> = new EventEmitter();
+  form: FormGroup = new FormGroup({
+    'email': new FormControl(null),
+    'senha': new FormControl(null)
+  })
 
-  constructor() { }
+  constructor(
+    private auth: Auth
+  ) { }
 
   ngOnInit(): void {
   }
 
   exibirCadastro(): void {
     this.exibirPainel.emit(true);
+  }
+
+  autenticar(): void{
+    this.auth.autenticar(this.form.value.email, this.form.value.senha);
   }
 
 }
